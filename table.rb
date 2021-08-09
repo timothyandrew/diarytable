@@ -1,11 +1,15 @@
 #!/usr/bin/env ruby
 
-if ARGV.count != 3
-  puts "usage: table.rb <year> <month> <days>"
+require 'set'
+
+if !Set[3,4].include?(ARGV.count)
+  puts "usage: table.rb <year> <month> <days> <start_day>"
   exit 1
 end
 
-year, month, day = ARGV.map(&:to_i)
+year, month, day, start_day = ARGV.map(&:to_i)
+start_day = start_day || 1
+
 columns = 5
 
 columns.times { |i| print '| ' }
@@ -13,7 +17,7 @@ print "|\n"
 columns.times { |i| print '|---' }
 print "|\n"
 
-(1..day).each_slice(columns) do |row|
+(start_day..day).each_slice(columns) do |row|
   row.each do |day|
     month_padded = sprintf '%02d', month
     day_padded = sprintf '%02d', day

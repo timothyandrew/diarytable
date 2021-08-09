@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 if ARGV.count != 3
-  puts "usage: table.rb <year> <month> <days>"
+  puts "usage: embed.rb <year> <month> <days>"
   exit 1
 end
 
